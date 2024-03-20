@@ -15,7 +15,7 @@ Route::post('/crear-cuenta',[RegisterController::class, 'store'] );
 Route::get('/cambiar_password',[PasswordController::class, 'index'] )->name('password');
 Route::post('/cambiar_password',[PasswordController::class, 'store'] );
 
-Route::get('/{usuario:paciente}', [PacienteController::class, 'index'])->name('paciente.index');
+Route::get('/{usuario:paciente}', [PacienteController::class, 'index'])->name('paciente.index')->middleware('auth');
 Route::get('/{usuario:paciente}/registros', [PacienteController::class, 'create'])->name('paciente.create');
 Route::post('/{usuario:paciente}/registros/crear', [PacienteController::class, 'store'])->name('paciente.store');
 Route::get('/editar/{registro:id}', [PacienteController::class, 'edit'])->name('paciente.editar');

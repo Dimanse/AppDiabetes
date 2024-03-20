@@ -11,10 +11,17 @@ use Illuminate\Support\Facades\DB;
 class PacienteController extends Controller
 {
     //
+
+
     public function index()
     {
         $usuario = User::find(auth()->user()->id);
         $usuario->paciente = str_replace("-"," ",$usuario->paciente);
+        if($usuario->id === null){
+            return redirect()->route('auth.register');
+        }
+
+        // dd($usuario);
 
         $registros = DB::table('registros')
         ->where('user_id', $usuario->id)

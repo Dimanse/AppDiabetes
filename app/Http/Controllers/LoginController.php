@@ -27,5 +27,6 @@ class LoginController extends Controller
          return redirect()->route('paciente.index', auth()->user()->paciente );
 
 
+
     }
 }
